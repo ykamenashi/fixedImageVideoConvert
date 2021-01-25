@@ -26,10 +26,11 @@ function errq {
 if [[ "$1" =~ [-]+[h]* ]] ; then usage; fi
 
 ### Number of arguments are must 3
-if [ $# -ne 3 ] ; then usage; fi
+if [[ $# -ne 3 ]] ; then usage; fi
 
 ### ffmpeg existing check
-readonly EXIST_CHECK_CODE=$(command -v ffmpeg > /dev/null 2>&1)
+command -v ffmpeg > /dev/null 2>&1
+readonly EXIST_CHECK_CODE=$?
 if [ $EXIST_CHECK_CODE -ne 0 ] ; then usage ; fi
 
 ### input pict file existing check
